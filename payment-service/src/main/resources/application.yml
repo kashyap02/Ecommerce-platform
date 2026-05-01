@@ -1,21 +1,9 @@
 server:
-  port: 8083
+  port: 8084
 
 spring:
   application:
-    name: order-service
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/orderdb
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    open-in-view: false
+    name: payment-service
 
   kafka:
     bootstrap-servers: localhost:9092
@@ -29,14 +17,7 @@ spring:
       properties:
         spring.json.trusted.packages: "*"
         spring.json.use.type.headers: false
-        spring.json.value.default.type: com.ecommerce.orderservice.event.PaymentEvent
-
-jwt:
-  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-
-services:
-  product-service:
-    url: http://localhost:8082
+        spring.json.value.default.type: com.ecommerce.paymentservice.event.OrderPlacedEvent
 
 kafka:
   topics:
@@ -44,4 +25,4 @@ kafka:
     payment-confirmed: payment-confirmed
     payment-failed: payment-failed
   consumer:
-    group-id: order-service-group
+    group-id: payment-service-group
