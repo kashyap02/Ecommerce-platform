@@ -34,5 +34,11 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
 
+  redis:
+    image: redis:7.2
+    container_name: redis-ecommerce
+    ports:
+      - "6379:6379"
+
 volumes:
   mysql-data:
